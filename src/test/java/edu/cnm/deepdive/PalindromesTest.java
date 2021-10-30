@@ -13,4 +13,6 @@ class PalindromesTest {
   void checkRecursive(String input, boolean expected) {
     assertEquals(expected, Palindromes.checkRecursive(input));
   }
+
+
 }
