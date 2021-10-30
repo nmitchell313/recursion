@@ -39,10 +39,10 @@ class FactorialsTest {
 
   @Test
   void computeBigIntRecursive() {
-    for (int i = 0; i < nArgs.length; i++) {
-      int n = nArgs[i];
-      long expected = expectedReturn[i];
-      long actual = Factorials.computeBigIntRecursive(n);
+    for (BigInteger i = BigInteger.valueOf(0); i < nArgs.length; i++) {
+      BigInteger n = nArgs[i];
+      Integer expected = expectedReturn[i];
+      Integer actual = Factorials.computeBigIntRecursive(n);
       assertEquals(expected, actual);
     }
   }

@@ -12,12 +12,11 @@ public abstract class Factorials {
 
   }
 
-  public static long computeBigIntRecursive(int n) throws IllegalArgumentException {
-    if (n < 0) {
+  public static Integer computeBigIntRecursive(BigInteger n) throws IllegalArgumentException {
+    if (n < 0)
       throw new IllegalArgumentException();
-    }
     return (n == 0 ) ? 1 : ( n * computeRecursive(n - 1));
-  BigInteger bigInteger = BigInteger.valueOf(computeBigIntRecursive(n));
+  return ( n == 0) ? 1 : (n * computeBigIntRecursive(n - 1));
 
   }
 
