@@ -4,32 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 class FactorialsTest {
 
-  static final int[] nArgs = {
-      0,
-      1,
-      5,
-      10,
-      13
-  };
-  static final long[] expectedReturn = {
-      1,
-      1,
-      120,
-      3628800,
-      6227020800L
-  };
-
-  @Test
-  void computeRecursive() {
-    for (int i = 0; i < nArgs.length; i++) {
-      int n = nArgs[i];
-      long expected = expectedReturn[i];
-      long actual = Factorials.computeRecursive(n);
-      assertEquals(expected, actual);
-    }
+  @ParameterizedTest
+  @CsvFileSource(resources = "recursive.csv", numLinesToSkip = 1)
+  void computeRecursive(int n, long expected) {
+   assertEquals(expected, Factorials.computeRecursive(n));
   }
 
   @Test
@@ -37,14 +20,11 @@ class FactorialsTest {
     assertThrows(IllegalArgumentException.class, () -> Factorials.computeRecursive(-1));
   }
 
-  @Test
-  void computeBigIntRecursive() {
-    for (BigInteger i = BigInteger.valueOf(0); i < nArgs.length; i++) {
-      BigInteger n = nArgs[i];
-      Integer expected = expectedReturn[i];
-      Integer actual = Factorials.computeBigIntRecursive(n);
-      assertEquals(expected, actual);
-    }
+  @ParameterizedTest
+  @CsvFileSource(resources = "bigint-recursive.csv", numLinesToSkip = 1)
+  void computeBigIntRecursive(long n, int expected) {
+    assertEquals(expected, Factorials.computeBigIntRecursive(n));
+
   }
 
 }
